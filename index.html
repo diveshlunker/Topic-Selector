@@ -4,9 +4,11 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="index.css">
 
+    <script src="jquery-3.3.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js">
-    </script>
+
+
+
     <script type="text/javascript" src="E:\DA\index.js"></script>
     <title>Topic Selector</title>
   </head>
@@ -18,29 +20,83 @@
         <ul id="progressbar">
           <li class="active">SignIn</li>
           <li>Details</li>
+          <li>Submission</li>
         </ul>
 
-        <fieldset>
-          <h2 class="fs-title">SignIn</h2>
-          <h3 class="fsf-subtitle">This is step 1</h3>
+        <fieldset class="first">
+          <!-- <h2 class="fs-title">SignIn</h2> -->
+          <h3 class="fsf-subtitle">Signin To Continue</h3><br>
           <input type="text" name="email" placeholder="Email" />
           <input type="password" name="pass" placeholder="Password" />
           <input type="password" name="cpass" placeholder="Confirm Password" />
-          <input type="button" name="next" class="next action-button" value="Next" />
+          <input type="button" name="next" class="next firstbutton action-button" value="Next" />
         </fieldset>
-        <fieldset>
-          <h2 class="fs-title">Topic</h2>
-          <h3 class="fsf-subtitle">Enter Your Selected Topic</h3>
-          Name:-<input type="text" name="Name"><br>
-          Reg.No:-<input type="text" name="reg_no"><br>
-          Mobile No:- <input type="number" name="number"><br>
-          Topic:- <input type="text" name="topic"><br>
+        <fieldset class="second">
+          <!-- <h2 class="fs-title">Topic</h2> -->
+          <h3 class="fsf-subtitle">Enter Your Selected Topic</h3><br>
+          <input type="text" name="Name" placeholder="Name" />
+          <input type="text" name="reg_no" placeholder="Reg.No"/>
+          <input type="number" name="number" placeholder="Phone Number"/>
+          <input type="text" name="topic" placeholder="Topic"/>
           <input type="button" name="previous" class="previous action-button" value="Previous" />
-          <input type="submit" name="submit" class="submit action-button" value="Submit" />
+          <input type="button" name="next" class="next secondbutton action-button" value="Submit" />
+        </fieldset>
+
+        <fieldset class="third">
+          <!-- <h2 class="fs-title">Topic</h2> -->
+          <h3 class="fsf-subtitle">Thank You:)</h3><br><hr><br>
+          <h4> Name:-</h4><br>
+          <h4> Phone No:-</h4><br>
+          <h4> Reg.No:-</h4><br>
+          <h4> Topic:-</h4><br>
+          <h4> Email:-</h4><br><hr><br>
+          <h4> Topic Can Be Changed Within Next 24 Hours..</h4>
+
+
         </fieldset>
       </form>
 
-      
+      <script>
+
+      $(".firstbutton").click(function(){
+        $(".first").hide();
+        $(".second").show();
+        var $parent = $(this).parent();
+        var $next_fs = $(this).parent().next();
+        $("#progressbar li").eq($("fieldset").index($next_fs)).addClass("active");
+        // $("#progressbar li").eq($("fieldset").index($parent)).removeClass("active");
+
+
+      });
+      </script>
+
+      <script>
+
+      $(".secondbutton").click(function(){
+        $(".second").hide();
+        $(".third").show();
+        var $parent = $(this).parent();
+        var $next_fs = $(this).parent().next();
+        $("#progressbar li").eq($("fieldset").index($next_fs)).addClass("active");
+
+
+      });
+      </script>
+      <script>
+
+      $(".previous").click(function(){
+      	$(".second").hide();
+        $(".first").show();
+        var $parent = $(this).parent();
+        var $next_fs = $(this).parent().prev();
+        $("#progressbar li").eq($("fieldset").index($next_fs)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index($parent)).removeClass("active");
+      });
+
+
+    </script>
+
+
 
 
 
