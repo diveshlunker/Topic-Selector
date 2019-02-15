@@ -9,13 +9,32 @@
 
 
 
-    <script type="text/javascript" src="E:\DA\index.js"></script>
+
     <title>Topic Selector</title>
   </head>
   <body>
+    <script src="index.js"></script>
+
+
+
+
+    <section id="header">
+      <h1> Select Your Topic For DA-2</h1><br>
+      <h3>Works On First Come First Basis</h3>
+    </section>
+    <div id="cont">
+
+
+
 
     <section id="main">
-      <form id="msform">
+      <!-- <section class="cont">
+        <fieldset class="topicsel">
+        </fieldset>
+      </section> -->
+
+
+      <form action="index.php" id="msform">
 
         <ul id="progressbar">
           <li class="active">SignIn</li>
@@ -25,7 +44,7 @@
 
         <fieldset class="first">
           <!-- <h2 class="fs-title">SignIn</h2> -->
-          <h3 class="fsf-subtitle">Signin To Continue</h3><br>
+          <h3 class="fsf-subtitle">SignIn To Continue</h3><br>
           <input type="text" name="email" placeholder="Email" />
           <input type="password" name="pass" placeholder="Password" />
           <input type="password" name="cpass" placeholder="Confirm Password" />
@@ -56,45 +75,39 @@
         </fieldset>
       </form>
 
-      <script>
+    </section>
 
-      $(".firstbutton").click(function(){
-        $(".first").hide();
-        $(".second").show();
-        var $parent = $(this).parent();
-        var $next_fs = $(this).parent().next();
-        $("#progressbar li").eq($("fieldset").index($next_fs)).addClass("active");
-        // $("#progressbar li").eq($("fieldset").index($parent)).removeClass("active");
+    </div>
+
+    <script>
+
+    var parent, next_fs, previous_fs;
 
 
-      });
-      </script>
 
-      <script>
+    $(".next").click(function(){
+      parent = $(this).parent();
+      next_fs = $(this).parent().next();
+      prev_fs = $(this).parent().prev();
+      $(parent).hide();
+      $(next_fs).show();
+      $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+       // $("#progressbar li").eq($("fieldset").index(parent)).removeClass("active");
 
-      $(".secondbutton").click(function(){
-        $(".second").hide();
-        $(".third").show();
-        var $parent = $(this).parent();
-        var $next_fs = $(this).parent().next();
-        $("#progressbar li").eq($("fieldset").index($next_fs)).addClass("active");
+     });
 
+     $(".previous").click(function(){
+       parent = $(this).parent();
+       prev_fs = $(this).parent().prev();
+       $(parent).hide();
+       $(prev_fs).show();
+       // $("#progressbar li").eq($("fieldset").index(prev_fs)).addClass("active");
+       $("#progressbar li").eq($("fieldset").index(parent)).removeClass("active");
 
-      });
-      </script>
-      <script>
-
-      $(".previous").click(function(){
-      	$(".second").hide();
-        $(".first").show();
-        var $parent = $(this).parent();
-        var $next_fs = $(this).parent().prev();
-        $("#progressbar li").eq($("fieldset").index($next_fs)).addClass("active");
-        $("#progressbar li").eq($("fieldset").index($parent)).removeClass("active");
-      });
+     });
+     </script>
 
 
-    </script>
 
 
 
