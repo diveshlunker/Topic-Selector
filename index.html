@@ -6,10 +6,6 @@
 
     <script src="jquery-3.3.1.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-
-
-
     <title>Topic Selector</title>
   </head>
   <body>
@@ -17,7 +13,10 @@
 
 
 
-
+    <section class="cont">
+      <fieldset class="topicsel">
+      </fieldset>
+    </section>
     <section id="header">
       <h1> Select Your Topic For DA-2</h1><br>
       <h3>Works On First Come First Basis</h3>
@@ -28,10 +27,7 @@
 
 
     <section id="main">
-      <!-- <section class="cont">
-        <fieldset class="topicsel">
-        </fieldset>
-      </section> -->
+
 
 
       <form action="index.php" id="msform">
@@ -91,7 +87,7 @@
       prev_fs = $(this).parent().prev();
       $(parent).hide();
       $(next_fs).show();
-      $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+      $("#progressbar li").eq($("fieldset").index(parent)).addClass("active");
        // $("#progressbar li").eq($("fieldset").index(parent)).removeClass("active");
 
      });
@@ -102,7 +98,7 @@
        $(parent).hide();
        $(prev_fs).show();
        // $("#progressbar li").eq($("fieldset").index(prev_fs)).addClass("active");
-       $("#progressbar li").eq($("fieldset").index(parent)).removeClass("active");
+       $("#progressbar li").eq($("fieldset").index(prev_fs)).removeClass("active");
 
      });
      </script>
